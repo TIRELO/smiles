@@ -1,0 +1,35 @@
+<div [@routerTransition] class="dashboard">
+    <div class="principal-box">
+    <img src="{{logo}}" width="200px" style="padding: 10px">
+        <div class = "principal-grid">
+            <div class="row" align="center">
+                    <div class="col-sm-4">
+                            <a routerLink="mith-true" class="link-page">
+                                <img src="{{mithOrTrueLogo}}" width="200px" class="element-logo" />
+                                <h2 class="description">Mito ou verdade?</h2>
+                            </a>
+                    </div>
+                    <div class="col-sm-4">
+                    <a routerLink="smile" class="link-page">
+                            <img src="{{smileLogo}}" width="200px" class="element-logo" />
+                            <h2 class="description">Smiles</h2>
+                        </a>
+                    </div>
+                    <div class="col-sm-4">
+                            <a routerLink="news" class="link-page">
+                                <img src="{{newsLogo}}" width="200px" class="element-logo" />
+                                <h2 class="description">Novidades</h2>
+                            </a>
+                    </div>
+            </div>
+        </div>
+        <div class="footer">
+                <a routerLink="contact" class="footer-element">
+                    Contato
+                </a>
+                <a routerLink="about" class="footer-element">
+                    Quem somos? 
+                </a>
+        </div>
+    </div>
+</div>
