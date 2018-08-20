@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Pergunta } from './pergunta.model';
 import { Perguntas } from './perguntas-mock';
+import { PRIMARY_OUTLET } from '@angular/router';
 
 @Component({
     selector: 'app-mithtrue-page',
@@ -41,19 +42,19 @@ export class MithtruePageComponent implements OnInit {
     alterarPergunta () {
         this.index += 1;
 
-        if(this.index < this.perguntas.length){
+        if (this.index < this.perguntas.length) {
             this.perguntaAtiva = this.perguntas[this.index];
             this.perguntaRespondida = false;
 
-            let lastIndex = this.perguntas.length - this.index
-            if(lastIndex === 1) {
+            let lastIndex = this.perguntas.length - this.index;
+            if (lastIndex === 1) {
                 this.isLastQuestion = true;
             }
         }
     }
 
     responderPergunta (resposta: boolean) {
-        if(resposta === this.perguntaAtiva.resposta){
+        if (resposta === this.perguntaAtiva.resposta) {
             this.acertou = true;
             this.acertos += 1;
         } else {
@@ -65,6 +66,6 @@ export class MithtruePageComponent implements OnInit {
 
     finalizarJogo () {
         this.isGameEnded = true;
-        this.resultado = 'Você acertou ' + this.acertos + ' de ' + this.perguntas.length + ' perguntas!'
+        this.resultado = 'Você acertou ' + this.acertos + ' de ' + this.perguntas.length + ' perguntas!';
     }
 }

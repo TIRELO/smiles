@@ -12,7 +12,7 @@ export class DashboardComponent implements OnInit {
     mithOrTrueLogo: string;
     smileLogo: string;
     newsLogo: string;
-    
+
     constructor() {
         this.logo = 'assets/images/logo2.png';
         this.smileLogo = 'assets/images/smile.png';
@@ -21,8 +21,5 @@ export class DashboardComponent implements OnInit {
     }
 
     ngOnInit() {
-        
     }
-
-
 }

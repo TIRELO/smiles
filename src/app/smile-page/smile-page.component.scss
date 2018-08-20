@@ -26,6 +26,90 @@
             color: #003366;
             padding: 5px;
         }
+
+        .first-element {
+            position: relative;
+            top: 18%;
+            .button-play{
+                padding: 2%;
+            }
+        }
+
+        .element-logo {
+            width: 200px;
+            -webkit-border-radius: 50%;
+            border-radius: 50%;
+        }
+
+        .principal-grid {
+            position: relative;
+            top: 15%;
+            .description{
+                font-family: fantasy;
+                font-size: 30px;
+                color: #000;
+                padding: 5px;
+            }
+        }
+
+        .select-level {
+            position: relative;
+            top: 15%;
+        }
+
+        .question {
+            position: relative;
+            top: 5%;
+        }
+
+        .question-description{
+            font-family: fantasy;
+            font-size: 30px;
+            color: #003366;
+            padding: 5px;
+        }
+
+        .question-image {
+            width: 150px;
+            padding: 15px;
+            -webkit-border-radius: 50%;
+            border-radius: 50%;
+        }
+
+        .option{
+            position: relative;
+            top: 10%;
+
+            .option-image {
+                width: 100px;
+                -webkit-border-radius: 50%;
+                border-radius: 50%;
+            }
+
+            .option-description{
+                font-family: fantasy;
+                font-size: 30px;
+                color: #003366;
+                padding: 5px;
+            }
+        }
+
+        .restart-button{
+            position: relative;
+            top: 20%;
+        }
+
+        .result {
+            position: relative;
+            top: 15%;
+        }
+
+        .text {
+            font-family: fantasy;
+            font-size: 25px;
+            color: #003366;
+            padding: 5px;
+        }
     }
 
     .footer{
