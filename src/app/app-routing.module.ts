@@ -7,12 +7,12 @@ import { AboutPageModule } from './about-page/about-page.module';
 import { ContactPageModule } from './contact-page/contact-page.module';
 import { NotFoundModule } from './not-found/not-found.module';
 
-export function loadDashboardModule () { return DashboardModule }
-export function loadMithtruePageModule () { return MithtruePageModule }
-export function loadSmilePageModule () { return SmilePageModule }
-export function loadAboutPageModule () { return AboutPageModule }
-export function loadContactPageModule () { return ContactPageModule }
-export function loadNotFoundModule () { return NotFoundModule }
+export function loadDashboardModule () { return DashboardModule; }
+export function loadMithtruePageModule () { return MithtruePageModule; }
+export function loadSmilePageModule () { return SmilePageModule; }
+export function loadAboutPageModule () { return AboutPageModule; }
+export function loadContactPageModule () { return ContactPageModule; }
+export function loadNotFoundModule () { return NotFoundModule; }
 
 const routes: Routes = [
     { path: '', loadChildren: loadDashboardModule },
