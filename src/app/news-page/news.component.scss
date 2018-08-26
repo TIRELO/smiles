@@ -1,4 +1,4 @@
-.contact {
+.dashboard {
     position: absolute;
     top: 0;
     left: 0;
@@ -19,21 +19,31 @@
     .principal-box{
         background-color: #8FD8D2;
         height: 100%;
-
-        .title {
-            font-size: 40px;
-            color: #003366;
-            padding: 5px;
+        
+        .principal-grid {
+            position: relative;
+            top: 15%;
+            .link-page{
+                .element-logo {
+                    -webkit-border-radius: 50%;
+                    border-radius: 50%;
+                }
+                .description{
+                    font-family: fantasy;
+                    font-size: 30px;
+                    padding: 5px;
+                }
+            }   
         }
     }
 
     .footer{
         position: absolute;
         top: 87%;
-        left:90%;
+        left:80%;
         .footer-element{
+            font-family: fantasy;
             font-size: 20px;
-            color: #003366;
             padding: 5px;
         }
     }

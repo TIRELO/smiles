@@ -4,7 +4,7 @@ import { routerTransition } from '../router.animations';
 @Component({
     selector: 'app-dashboard',
     templateUrl: './dashboard.component.html',
-    styleUrls: ['./dashboard.component.scss'],
+    styleUrls: ['./dashboard.component.scss', '../../styles/style.scss'],
     animations: [routerTransition()]
 })
 export class DashboardComponent implements OnInit {

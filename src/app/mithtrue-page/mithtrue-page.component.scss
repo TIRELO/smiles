@@ -21,30 +21,30 @@
         height: 100%;
 
         .title {
-            font-family: fantasy;
             font-size: 40px;
-            color: #003366;
             padding: 5px;
         }
     
         .subtitle {
-            font-family: fantasy;
             font-size: 30px;
-            color: #003366;
             padding: 5px;
+        }
+        
+        @mixin conteudo{
+            position: relative;
+            margin: 50px 100px 0px 100px;
+            padding-top: 20px;
         }
 
         .first-element {
-            position: relative;
-            top: 18%;
+            @include conteudo;
             .button-play{
                 padding: 2%;
             }
         }
 
         .questions {
-            position: relative;
-            top: 15%;
+            @include conteudo;
         }
 
         .result {
@@ -58,21 +58,7 @@
         }
 
         .text {
-            font-family: fantasy;
-            font-size: 25px;
-            color: #003366;
-            padding: 5px;
-        }
-    }
-
-    .footer{
-        position: absolute;
-        top: 87%;
-        left:90%;
-        .footer-element{
-            font-family: fantasy;
             font-size: 20px;
-            color: #003366;
             padding: 5px;
         }
     }

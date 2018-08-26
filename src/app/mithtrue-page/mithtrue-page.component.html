@@ -1,8 +1,8 @@
 <div class="mith-true">
     <div class="principal-box">
-    <h2 class="title">Mito ou Verdade?</h2>
-    <small class="subtitle">Teste seu conhecimento sobre a Síndrome de Down</small>
-        <div class="first-element">
+        <h2 class="title">Mito ou Verdade?</h2>
+        <small class="subtitle">Teste seu conhecimento sobre a Síndrome de Down</small>
+        <div class="first-element" *ngIf="isFirst">
             <div *ngIf="isFirst">
                     <img src="{{mithOrTrueLogo}}" width="200px" class="element-logo"/>
                     <div class="button-play">
@@ -11,47 +11,38 @@
             </div>   
         </div> 
               
-        <div class="questions">
+        <div class="questions" *ngIf="!isFirst && !isGameEnded">
                 <div *ngIf="!isFirst && !isGameEnded">
                         <h2 class="title">{{perguntaAtiva.descricao}}</h2>
                         <br>
-                        <button *ngIf="!perguntaRespondida" (click)="responderPergunta(false)" type="button" class="btn btn-default">Mito</button>
-                        <button *ngIf="!perguntaRespondida" (click)="responderPergunta(true)" type="button" class="btn btn-default">Realidade</button>
-                        <span *ngIf="perguntaRespondida  && acertou" class="badge badge-success">Acertou</span>
-                        <span *ngIf="perguntaRespondida  && !acertou" class="badge badge-danger">Errou</span>
-                        <br>
+                        <button *ngIf="!perguntaRespondida" (click)="responderPergunta(false)" type="button" class="btn btn-default btn-lg">Mito</button>
+                        <button *ngIf="!perguntaRespondida" (click)="responderPergunta(true)" type="button" class="btn btn-default btn-lg">Verdade</button>
+                        <h2><span *ngIf="perguntaRespondida  && acertou" class="badge badge-success">Acertou</span></h2>
+                        <h2><span *ngIf="perguntaRespondida  && !acertou" class="badge badge-danger">Errou</span></h2>
                         <br>
                         <p *ngIf="perguntaRespondida" class="text">{{perguntaAtiva.descricaoResposta}}</p>
                         <br>
-                        <button *ngIf="perguntaRespondida && !isLastQuestion" (click)="alterarPergunta()" type="button" class="btn btn-default">Próxima pergunta</button>
-                        <button *ngIf="perguntaRespondida && isLastQuestion" (click)="finalizarJogo()" type="button" class="btn btn-default">Ver Resultado</button>
+                        <button *ngIf="perguntaRespondida && !isLastQuestion" (click)="alterarPergunta()" type="button" class="btn btn-default btn-lg">Próxima pergunta</button>
+                        <button *ngIf="perguntaRespondida && isLastQuestion" (click)="finalizarJogo()" type="button" class="btn btn-default btn-lg">Ver Resultado</button>
                 </div>
             </div>
         
             <div class="result">
                 <div *ngIf="isGameEnded">
                         <h2 class="title">{{resultado}}</h2>
-                            <div *ngIf="acertos === 1">
-                                <p class="text">Não desanime, é errando que se aprende!</p>
-                                <p class="text">Sabemos do seu potencial, e incentivamos que volte a jogar assim que possível</p>
-                            </div>
-                            <div *ngIf="acertos === 2">
-                                <p class="subtitle">Você foi bem, mas podemos melhorar!</p>
-                                <p class="text">Você se dedicou e acertou a maior parte das questões, agora é hora de acertar todas!</p>    
-                            </div> 
-                            <div *ngIf="acertos === 3">
-                                <p class="text">Você é um expert!</p>
-                                <p class="text">Você acertou todas, e está pronto para ajudar a conscientizar a sociedade.</p>    
-                            </div>               
+                            <div>
+                                <p class="text">{{Message}}</p>
+                                <p class="text">{{descriptionMessage}}</p>
+                            </div>              
                         <br>
                         <p class="text">Muito Obrigado por jogar!</p>
-                        <button (click)="onButtomPlay()" type="button" class="btn btn-default .btn-lg">Jogar Novamente</button>
+                        <button (click)="onButtomPlay()" type="button" class="btn btn-default btn-lg">Jogar Novamente</button>
                 </div>        
         </div>
-    </div>
-    <div class="footer">
-            <a routerLink="" class="footer-element">
-                Voltar
-            </a>
+        <div class="footer">
+                <a routerLink="" class="footer-element">
+                    Voltar
+                </a>
+        </div>
     </div>
 </div>

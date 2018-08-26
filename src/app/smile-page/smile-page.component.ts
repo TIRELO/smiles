@@ -6,7 +6,7 @@ import { AtividadesLevelTwo } from './atividades-level-two.mock';
 @Component({
     selector: 'app-smile-page',
     templateUrl: './smile-page.component.html',
-    styleUrls: ['./smile-page.component.scss']
+    styleUrls: ['./smile-page.component.scss', '../../styles/style.scss']
 })
 export class SmilePageComponent implements OnInit {
     index: number;

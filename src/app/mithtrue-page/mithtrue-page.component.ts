@@ -6,7 +6,7 @@ import { PRIMARY_OUTLET } from '@angular/router';
 @Component({
     selector: 'app-mithtrue-page',
     templateUrl: './mithtrue-page.component.html',
-    styleUrls: ['./mithtrue-page.component.scss']
+    styleUrls: ['./mithtrue-page.component.scss', '../../styles/style.scss']
 })
 export class MithtruePageComponent implements OnInit {
     perguntaAtiva: Pergunta;
@@ -20,6 +20,8 @@ export class MithtruePageComponent implements OnInit {
     isLastQuestion: boolean;
     acertos: number;
     resultado: string;
+    descriptionMessage: string;
+    Message: string;
 
     constructor() {}
 
@@ -66,6 +68,24 @@ export class MithtruePageComponent implements OnInit {
 
     finalizarJogo () {
         this.isGameEnded = true;
+
         this.resultado = 'Você acertou ' + this.acertos + ' de ' + this.perguntas.length + ' perguntas!';
+
+        const porcentagemDeAcertos = this.acertos / this.perguntas.length;
+
+        if (porcentagemDeAcertos >= 0 && porcentagemDeAcertos < 0.5) {
+            this.Message = 'Não desanime, é errando que se aprende!';
+            this.descriptionMessage = 'Sabemos do seu potencial, e incentivamos que volte a jogar assim que possível';
+        }
+
+        if (porcentagemDeAcertos >= 0.5 && porcentagemDeAcertos < 1) {
+            this.Message = 'Você foi bem, mas podemos melhorar!';
+            this.descriptionMessage = 'Você se dedicou e acertou a maior parte das questões, agora é hora de acertar todas!';
+        }
+
+        if (porcentagemDeAcertos === 1) {
+            this.Message = 'Você é um expert!';
+            this.descriptionMessage = 'Você acertou todas, e está pronto para ajudar a conscientizar a sociedade.';
+        }
     }
 }
