@@ -1,14 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Atividade } from './atividade-model';
-import { AtividadesLevelOne } from './atividades-level-one.mock';
-import { AtividadesLevelTwo } from './atividades-level-two.mock';
+import { AtividadesNumeros } from './atividades-numeros';
+import { AtividadesLetras } from './atividades-letras';
+import { AtividadesCorVermelha } from './atividades-cor-vermelha';
+import { AtividadesCorVerde } from './atividades-cor-verde';
+import { AtividadesCorAmarela } from './atividades-cor-amarela';
+import { AtividadesCorAzul } from './atividades-cor-azul';
 
 @Component({
     selector: 'app-smile-page',
     templateUrl: './smile-page.component.html',
     styleUrls: ['./smile-page.component.scss', '../../styles/style.scss']
 })
-export class SmilePageComponent implements OnInit {
+export class SmilePageComponent implements OnInit, OnDestroy {
     index: number;
     atividadeAtiva: Atividade;
     atividades: Atividade[];
@@ -16,121 +20,151 @@ export class SmilePageComponent implements OnInit {
     smileLogo: string;
     isGameEnded: boolean;
     isGameStarted: boolean;
-    selectLevel: boolean;
-    selectedLevel: number;
-    levelOneLogo: string;
-    levelTwoLogo: string;
-    acertos: number;
+    selectContext: boolean;
+    colorContextLogo: string;
+    numberContextLogo: string;
+    letterContextLogo: string;
+    selectColor: boolean;
+    redColorLogo: string;
+    greenColorLogo: string;
+    yellowColorLogo: string;
+    blueColorLogo: string;
     isLastQuestion: boolean;
-    result: string;
     message: string;
-    descriptionMessage: string;
     initialTime: any;
     endTime: any;
     totalTimeMinutes: any;
     totalTimeSeconds: any;
     timeResult: string;
+    correct: boolean;
+    correctLogo: string;
+    congratsLogo: string;
+    acertsAudio: any;
+    errorAudio: any;
+    introAudio: any;
+    isSoundEnable: boolean;
+
+    // Setar mocks de atividades
+    atividadesNumero = AtividadesNumeros;
+    atividadesLetras = AtividadesLetras;
+    atividadesCorVermelha = AtividadesCorVermelha;
+    atividadesCorVerde = AtividadesCorVerde;
+    atividadesCorAmarela = AtividadesCorAmarela;
+    atividadesCorAzul = AtividadesCorAzul;
 
     constructor() {}
 
     ngOnInit() {
         this.smileLogo = 'assets/images/smile.png';
-        this.levelOneLogo = 'assets/images/level-1.png';
-        this.levelTwoLogo = 'assets/images/dois.png';
+        this.colorContextLogo = 'assets/images/color-logo.jpg';
+        this.numberContextLogo = 'assets/images/number-logo.jpg';
+        this.letterContextLogo = 'assets/images/letter-logo.jpg';
+        this.redColorLogo = 'assets/images/vermelho.jpg';
+        this.greenColorLogo = 'assets/images/verde.jpg';
+        this.yellowColorLogo = 'assets/images/amarelo.jpg';
+        this.blueColorLogo = 'assets/images/azul.jpg';
+        this.correctLogo = 'assets/images/correct.png';
+        this.congratsLogo = 'assets/images/baloes.png';
         this.isFirst = true;
         this.isGameEnded = false;
         this.isGameStarted = false;
+        this.selectColor = false;
+        this.acertsAudio = new Audio();
+        this.acertsAudio.src = 'assets/sounds/acerts-audio.mp3';
+        this.errorAudio = new Audio();
+        this.errorAudio.src = 'assets/sounds/error-audio.mp3';
+        this.introAudio = new Audio();
+        this.introAudio.loop = true;
+        this.introAudio.src = 'assets/sounds/intro-song.mp3';
     }
+
+    ngOnDestroy() {
+        // destroy audio here
+        if (this.introAudio) {
+          this.introAudio.pause();
+          this.introAudio = null;
+        }
+      }
 
     onButtomPlay() {
         this.isGameEnded = false;
         this.isFirst = false;
-        this.selectLevel = true;
+        this.selectContext = true;
+        this.introAudio.load();
+        this.introAudio.play();
+        this.isSoundEnable = true;
     }
 
-    startGame(selectedLevel: number) {
-        this.selectLevel = false;
-        this.selectedLevel = selectedLevel;
+    startGame(atividades: Atividade[]) {
+        this.selectContext = false;
+        this.selectColor = false;
         this.index = 0;
-
-        if (selectedLevel === 1) {
-            this.atividades = AtividadesLevelOne;
-        } else {
-            this.atividades = AtividadesLevelTwo;
-        }
-
+        this.atividades = atividades;
         this.atividadeAtiva = this.atividades[this.index];
-        this.acertos = 0;
         this.isGameStarted = true;
         this.initialTime = new Date().getTime();
     }
 
+    setColor() {
+        this.selectContext = false;
+        this.selectColor = true;
+    }
+
     onRestartButtonClick() {
-        this.selectLevel = true;
+        this.selectContext = true;
         this.isGameStarted = false;
         this.atividades = [];
         this.atividadeAtiva = null;
         this.index = 0;
-        this.acertos = 0;
         this.isGameEnded = false;
         this.isLastQuestion = false;
     }
 
     onOptionClick(resposta: number) {
-        this.index += 1;
-
         if (this.atividadeAtiva.resposta === resposta) {
-                this.acertos = this.acertos + 1;
-        }
-
-        if (!this.isLastQuestion) {
-            this.atividadeAtiva = this.atividades[this.index];
-
-            let lastIndex = this.atividades.length - this.index;
-            if (lastIndex === 1) {
-                this.isLastQuestion = true;
-            }
-        } else {
-            this.endTime = new Date().getTime();
-
-            this.totalTimeMinutes = new Date(this.endTime - this.initialTime).getUTCMinutes();
-            this.totalTimeSeconds = new Date(this.endTime - this.initialTime).getUTCSeconds();
             this.isGameStarted = false;
-            this.isGameEnded = true;
-            this.timeResult = 'Você terminou em ' + this.totalTimeMinutes + ' minutos e ' + this.totalTimeSeconds + ' segundos!';
-            this.result = 'Você acertou ' + this.acertos + ' de ' + this.atividades.length;
+            this.correct = true;
+            this.index += 1;
+            this.acertsAudio.load();
+            this.acertsAudio.play();
 
-            if (this.acertos === 0) {
-                this.message = 'Você não acertou nenhuma pergunta. =(';
-                this.descriptionMessage = 'Mas não desanime, sabemos que na proxima vez você vai arrasar!';
+            setTimeout(() => {
+                this.isGameStarted = true;
+                this.correct = false;
+
+                if (!this.isLastQuestion) {
+                    this.atividadeAtiva = this.atividades[this.index];
+
+                    let lastIndex = this.atividades.length - this.index;
+                    if (lastIndex === 1) {
+                        this.isLastQuestion = true;
+                    }
+                } else {
+                    this.endTime = new Date().getTime();
+
+                    this.totalTimeMinutes = new Date(this.endTime - this.initialTime).getUTCMinutes();
+                    this.totalTimeSeconds = new Date(this.endTime - this.initialTime).getUTCSeconds();
+                    this.isGameStarted = false;
+                    this.isGameEnded = true;
+                    this.timeResult = 'Você terminou em ' + this.totalTimeMinutes + ' minutos e ' + this.totalTimeSeconds + ' segundos!';
+                    this.message = 'Parabéns!';
             }
 
-            const porcentagemAcertos = this.acertos / this.atividades.length;
+            }, 2000);
 
-            if (porcentagemAcertos === 1) {
-                this.message = 'VOCÊ ACERTOU TODAS AS PERGUNTAS!!!';
-                this.descriptionMessage = 'Você foi sensacional, arrasou muito';
-            }
-
-            if (porcentagemAcertos > 0 && porcentagemAcertos <= 0.2) {
-                this.message = 'Não desanime, é errando que se aprende!';
-                this.descriptionMessage = 'Tente novamente, sabemos que vai se sair bem';
-            }
-
-            if (porcentagemAcertos > 0.20 && porcentagemAcertos <= 0.5) {
-                this.message = 'Você está aprendendo';
-                this.descriptionMessage = 'Logo logo vai estar fera';
-            }
-
-            if (porcentagemAcertos > 0.50 && porcentagemAcertos <= 0.8) {
-                this.message = 'Quase lá!!';
-                this.descriptionMessage = 'Logo vai ser um expert';
-            }
-
-            if (porcentagemAcertos > 0.50 && porcentagemAcertos < 1) {
-                this.message = 'Falta muito pouco';
-                this.descriptionMessage = 'Você está sendo excelente, logo vai acertar tudo';
-            }
+    } else {
+        this.errorAudio.load();
+        this.errorAudio.play();
         }
+    }
+
+    stopSong() {
+        this.introAudio.pause();
+        this.isSoundEnable = false;
+    }
+
+    startSong() {
+        this.introAudio.play();
+        this.isSoundEnable = true;
     }
 }

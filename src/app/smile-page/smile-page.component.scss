@@ -32,6 +32,12 @@
             }
         }
 
+        .sounds{
+            position: absolute;
+            top: 0;
+            right: 1%;
+        }    
+
         .element-logo {
             width: 200px;
             -webkit-border-radius: 50%;
@@ -47,6 +53,11 @@
         }
 
         .select-level {
+            position: relative;
+            top: 15%;
+        }
+
+        .select-color {
             position: relative;
             top: 15%;
         }
@@ -89,12 +100,20 @@
 
         .result {
             position: relative;
-            top: 15%;
+            top: 5%;
         }
 
         .text {
-            font-size: 25px;
             padding: 5px;
+        }
+
+        .correct {
+            position: relative;
+            top: 10%;
+        }
+
+        .correct-image {
+            width: 30%;
         }
     }
 }
