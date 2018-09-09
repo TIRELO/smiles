@@ -3,9 +3,9 @@
         <h2 class="title">Smiles</h2>
         
         <div class="first-element" *ngIf="isFirst">
-            <img src="{{smileLogo}}" class="element-logo"/>
+            <img src="{{smileLogo}}" class="element-logo imagens"/>
             <div class="button-play">
-                    <button (click)="onButtomPlay()" type="button" class="btn btn-light btn-lg">Jogar</button>
+                    <button (click)="onButtomPlay()" type="button" class="btn btn-light btn-lg botao">Jogar</button>
             </div>
         </div>
 
@@ -18,25 +18,25 @@
             </a>
         </div>
 
-        <div *ngIf="selectContext" class="select-level">
+        <div *ngIf="selectContext" class="">
             <div class="principal-grid">
                 <div class="row" align="center">
                         <div class="col-sm-4">
                             <a href="javascript:void(0);" (click)="setColor()">
-                                <img src="{{colorContextLogo}}" class="element-logo"/>
-                                <h2 class="description">Cores</h2>
+                                <img src="{{colorContextLogo}}" class="element-logo imagens"/>
+                                <h2 class="description textoMenu">Cores</h2>
                             </a>
                         </div>
                         <div class="col-sm-4">
                             <a href="javascript:void(0);" (click)="startGame(atividadesNumero)">
-                                    <img src="{{numberContextLogo}}" class="element-logo"/>
-                                    <h2 class="description">Números</h2>
+                                    <img src="{{numberContextLogo}}" class="element-logo imagens"/>
+                                    <h2 class="description textoMenu">Números</h2>
                             </a>
                         </div>
                         <div class="col-sm-4">
                             <a href="javascript:void(0);" (click)="startGame(atividadesLetras)">
-                                    <img src="{{letterContextLogo}}" class="element-logo"/>
-                                    <h2 class="description">Letras</h2>
+                                    <img src="{{letterContextLogo}}" class="element-logo imagens"/>
+                                    <h2 class="description textoMenu">Letras</h2>
                             </a>
                         </div>
                 </div>
@@ -48,26 +48,26 @@
                 <div class="row" align="center">
                         <div class="col-sm-3">
                             <a href="javascript:void(0);" (click)="startGame(atividadesCorVermelha)">
-                                <img src="{{redColorLogo}}" class="element-logo"/>
-                                <h2 class="description">Vermelho</h2>
+                                <img src="{{redColorLogo}}" class="element-logo imgJogos"/>
+                                <h2 class="description textoMenu">Vermelho</h2>
                             </a>
                         </div>
                         <div class="col-sm-3">
                             <a href="javascript:void(0);" (click)="startGame(atividadesCorVerde)">
-                                    <img src="{{greenColorLogo}}" class="element-logo"/>
-                                    <h2 class="description">Verde</h2>
+                                    <img src="{{greenColorLogo}}" class="element-logo imgJogos"/>
+                                    <h2 class="description textoMenu">Verde</h2>
                             </a>
                         </div>
                         <div class="col-sm-3">
                             <a href="javascript:void(0);" (click)="startGame(atividadesCorAmarela)">
-                                    <img src="{{yellowColorLogo}}" class="element-logo"/>
-                                    <h2 class="description">Amarelo</h2>
+                                    <img src="{{yellowColorLogo}}" class="element-logo imgJogos"/>
+                                    <h2 class="description textoMenu">Amarelo</h2>
                             </a>
                         </div>
                         <div class="col-sm-3">
                             <a href="javascript:void(0);" (click)="startGame(atividadesCorAzul)">
-                                    <img src="{{blueColorLogo}}" class="element-logo"/>
-                                    <h2 class="description">Azul</h2>
+                                    <img src="{{blueColorLogo}}" class="element-logo imgJogos"/>
+                                    <h2 class="description textoMenu">Azul</h2>
                             </a>
                         </div>
                 </div>
@@ -79,7 +79,7 @@
                <div class="question">
                     <div class="row" align="center">
                             <div class="col-sm-12">
-                                <h2 class="question-description">
+                                <h2 class="question-description pergunta">
                                 {{atividadeAtiva.descricao}}
                                 <img class="question-image" *ngIf="atividadeAtiva.imagem" src="{{atividadeAtiva.imagem}}"/>
                                 </h2>
@@ -92,16 +92,16 @@
                         <ng-container *ngFor="let opcao of atividadeAtiva.opcoes">
                             <div class="col-sm-3">
                                 <a href="javascript:void(0);" (click)="onOptionClick(opcao.id)">
-                                    <img class="option-image" *ngIf="opcao && opcao.imagem" src="{{opcao.imagem}}"/>
-                                    <h2 class="option-description">{{opcao.descricao}}</h2>
+                                    <img class="option-image imgJogos" *ngIf="opcao && opcao.imagem" src="{{opcao.imagem}}"/>
+                                    <h2 class="option-description textoMenu">{{opcao.descricao}}</h2>
                                 </a>
                             </div>
                         </ng-container>
                     </div>
                 </div>
 
-                <div class="restart-button">
-                    <button (click)="onRestartButtonClick()" type="button" class="btn btn-light btn-lg">Reiniciar</button>
+                <div class="restart-button reniciar">
+                    <button (click)="onRestartButtonClick()" type="button" class="btn btn-light btn-lg ">Reiniciar</button>
                 </div>
         </ng-container>
 
@@ -111,10 +111,10 @@
         </div>
 
         <div class="result" *ngIf="isGameEnded">
-                <img src="{{congratsLogo}}" width="300"/>
+                <img src="{{congratsLogo}}"  class="imagens"width="300"/>
                 <h2 class="title">{{timeResult}}</h2>
                 <div>
-                    <p class="text">{{message}}</p>
+                    <p class="text textoMenu">{{message}}</p>
                 </div>               
             <button (click)="onRestartButtonClick()" type="button" class="btn btn-light btn-lg">Jogar Novamente</button>
         </div>
@@ -126,5 +126,3 @@
         </div>
     </div>
 </div>
-
-

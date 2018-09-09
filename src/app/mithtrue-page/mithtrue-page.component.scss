@@ -24,7 +24,10 @@
             font-size: 40px;
             padding: 5px;
         }
-    
+        .resultado {
+            font-size: 26px;
+            padding: 5px;
+        }
         .subtitle {
             font-size: 30px;
             padding: 5px;
@@ -63,3 +66,69 @@
         }
     }
 }
+@media screen and (max-width: 768px ) {
+    .imagens {
+        width: 150px;
+    }
+
+    .subtitle {
+        font-size: 20px !important;
+    }
+
+    .title {
+        font-size:33px !important;
+    }
+
+    .text {
+        font-size: 17px !important;
+        margin-bottom: 0px !important;
+    }
+    .textoSubMenu {
+        font-size: 18px;
+    }
+
+    .botao {
+        margin-top: 15px;
+    }
+
+    .resultado {
+        font-size: 21px !important;
+    }
+
+    .questions {
+        margin: 0px 50px 0px 50px !important;
+    }
+ }
+
+ @media screen and (max-width:425px){
+    .resultado {
+        font-size: 16px !important;
+        margin-bottom: 5px;
+    }
+    .text {
+        font-size: 14px !important;
+    }
+
+    .questions {
+        position: relative;
+        padding-top: 20px;
+        top: 0px !important;
+        margin-left: 0px !important;
+        margin-right: 0px !important;
+    }
+    .botaoResultado {
+        margin-bottom: 0px;
+    }
+    .principal-box {
+        height: 112% !important;
+        font-size: 15px !important;
+    }
+    .btn-jogo {
+        padding: -0.5rem 1rem !important;
+        font-size: 1rem !important;
+        line-height: 1.5 !important;
+    }
+    .btn {
+        padding: 5px 15px 5px 15px !important;
+    }
+ }

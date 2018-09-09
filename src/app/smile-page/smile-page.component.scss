@@ -117,3 +117,57 @@
         }
     }
 }
+
+@media screen and (max-width: 768px ) {
+    .imagens {
+        width: 150px !important;
+    }
+    .imgJogos {
+        width: 130px !important;
+    }
+
+    .textoMenu {
+        font-size: 20px;
+    }
+
+    .question-image {
+        width: 130px !important;
+    }
+
+    .pergunta {
+        font-size: 21px !important;
+    }
+
+    .botao {
+        margin-top: 15px;
+    }
+
+    .reniciar {
+        top: 65px !important; 
+    }
+ }
+ @media screen and (max-width:425px){
+    .imagens {
+        width: 110px !important;
+    }
+    .principal-box {
+        height: 130% !important;        
+    }
+    .imgJogos {
+        width: 80px !important;
+    }
+    
+    .col-sm-3 {
+        width: 50% !important;
+    }
+    .textoMenu {
+        font-size: 18px !important;
+    }
+
+    .option {
+        top: 5% !important;
+    }
+    .btn {
+        padding: 5px 15px 5px 15px !important;
+    }
+}
